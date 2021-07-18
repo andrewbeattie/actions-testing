@@ -1,6 +1,8 @@
 # tick
 
-Allow for interactions with TickSpot through Python currently the goals are to be able to automatically create entries in TickSpot via a cronjob.
+Python scripts to assist with filling out TickSpot using the request module. Information on the project, task and entries can be queried
+through simple commands. Entries can also be created with this information. When creating an entry it can
+also check to see if the date is a holiday making it easy to implement automation for TickSpot entries.
 
 ## Installation
 Install directly from GitHub as follows:
