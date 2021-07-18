@@ -26,6 +26,7 @@ install_requires = get_requirements("requirements.txt")
 setup(
     name="tick",
     version="0.0.0",
+    entry_points={"console_scripts": ["ticker=tickspot.ticker:main"]},
     author="Andrew Beattie",
     description="Interact with TickSpot with Python",
     python_requires="~=3.6.8",

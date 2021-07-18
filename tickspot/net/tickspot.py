@@ -71,7 +71,7 @@ def create(args):
             env.get("DATE_COUNTRY"), prov=env.get("DATE_PROVINCE"), state=env.get("DATE_STATE")
         )
         if args.date in dates:
-            raise Exception("Date occurs on a holiday. Please enter manually if needed")
+            raise ValueError("Date occurs on a holiday.")
 
     tickspot = TickSpot(
         username=env.get("TICKSPOT_USERNAME"), password=env.get("TICKSPOT_PASSWORD")
