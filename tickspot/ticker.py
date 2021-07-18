@@ -35,5 +35,8 @@ if __name__ == "__main__":
     parser_create.add_argument(
         "-d", "--date", help="Date to use when creating an entry in the format %Y-%m-%d."
     )
+    parser_create.add_argument(
+        "-v", "--vacation", help="Country, state or province to check if there is a holiday."
+    )
     args = parser.parse_args()
     args.func(args)

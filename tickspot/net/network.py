@@ -24,7 +24,6 @@ class Authorize(object):
             return data.get("api_token"), data.get("subscription_id")
         else:
             raise Exception(r.text)
-            return False
 
 
 class Resource(object):

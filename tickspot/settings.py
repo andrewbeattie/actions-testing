@@ -8,6 +8,9 @@ env = {}
 _MAPPINGS = {
     ("TICKSPOT_USERNAME", "tickspot.username"),
     ("TICKSPOT_PASSWORD", "tickspot.password"),
+    ("DATE_COUNTRY", "date.country"),
+    ("DATE_PROVINCE", "date.vacation"),
+    ("DATE_STATE", "date.state")
 }
 
 
