@@ -1,9 +1,6 @@
-import sys
-
-sys.path.append("/home/andrew/projects/tick")
 from pprint import PrettyPrinter
 from argparse import ArgumentParser
-from tick.tickspot.tickspot import fetch, create
+from tickspot.net.tickspot import fetch, create
 
 if __name__ == "__main__":
     """Examples of How To Use
@@ -14,10 +11,8 @@ if __name__ == "__main__":
 
     parser = ArgumentParser(prog="TickSpot")
     subparsers = parser.add_subparsers(help="help for subcommands")
-
     parser_list = subparsers.add_parser("list")
     parser_list.set_defaults(func=fetch)
-
     parser_list.add_argument(
         "category",
         choices=["project", "task"],

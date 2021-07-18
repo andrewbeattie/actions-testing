@@ -14,15 +14,10 @@ date : summary of changes
 31/07/2020: Creating base classes and models for GET and POST requests
         - https://github.com/tick/tick-api/blob/master/sections/entries.md
 """
-
-import sys
-
-sys.path.append("/home/andrew/projects/tick")
-
 import json
 from pprint import PrettyPrinter
-from tick.settings import env
-from tick.tickspot.network import Entry, Project, Task, Authorize
+from tickspot.settings import env
+from tickspot.net import Entry, Project, Task, Authorize
 
 
 class TickSpot(Authorize):

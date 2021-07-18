@@ -3,12 +3,13 @@ import logging
 from logging.config import dictConfig
 import yaml
 
-_CONFIG = r"/home/andrew/projects/tick/config.yaml"
+_CONFIG = os.environ.get("TICKSPOT_CONFIG")
 env = {}
 _MAPPINGS = {
     ("TICKSPOT_USERNAME", "tickspot.username"),
     ("TICKSPOT_PASSWORD", "tickspot.password"),
 }
+
 
 def yaml_parse(config, key_path):
     """

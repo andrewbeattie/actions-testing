@@ -1,7 +1,4 @@
-import sys
-
-sys.path.append("/home/andrew/projects/tick")
-from tick.settings import env
+from tickspot.settings import env
 
 
 class Tasks:
