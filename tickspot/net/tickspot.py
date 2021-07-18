@@ -64,6 +64,15 @@ def fetch(args):
 
 
 def create(args):
+    import holidays
+
+    if args.vacation:
+        dates = holidays.CountryHoliday(
+            env.get("DATE_COUNTRY"), prov=env.get("DATE_PROVINCE"), state=env.get("DATE_STATE")
+        )
+        if args.date in dates:
+            raise ValueError("Date occurs on a holiday.")
+
     tickspot = TickSpot(
         username=env.get("TICKSPOT_USERNAME"), password=env.get("TICKSPOT_PASSWORD")
     )

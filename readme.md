@@ -12,8 +12,12 @@ pip install git+https://github.com/andrewbeattie/tick.git
 You will also need to have a config.yaml file with the following information:
 ```
 tickspot:
-  username: 
-  password: 
+  username:
+  password:
+date:
+  country:
+  province:
+  state:
 ```
 You will need to save this file and create the environment variable "TICKSPOT_CONFIG" pointing towards the config file.
 
