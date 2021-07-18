@@ -3,13 +3,19 @@
 Allow for interactions with TickSpot through Python currently the goals are to be able to automatically create entries in TickSpot via a cronjob.
 
 ## Installation
-To install you will need to clone the github repository. Currently it does not support pip.
+Install directly from GitHub as follows:
 
 
 ```bash
-git clone https://github.com/andrewbeattie/tick.git
+pip install git+https://github.com/andrewbeattie/tick.git
 ```
-You will need to add the folder to your system paths as well.
+You will also need to have a config.yaml file with the following information:
+```
+tickspot:
+  username: 
+  password: 
+```
+You will need to save this file and create the environment variable "TICKSPOT_CONFIG" pointing towards the config file.
 
 ## Usage
 

@@ -17,7 +17,7 @@ date : summary of changes
 import json
 from pprint import PrettyPrinter
 from tickspot.settings import env
-from tickspot.net import Entry, Project, Task, Authorize
+from tickspot.net.network import Entry, Project, Task, Authorize
 
 
 class TickSpot(Authorize):
