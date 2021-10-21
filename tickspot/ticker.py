@@ -1,4 +1,3 @@
-from pprint import PrettyPrinter
 from argparse import ArgumentParser
 from tickspot.net.tickspot import fetch, create
 
@@ -48,8 +47,8 @@ def main():
 
 if __name__ == "__main__":
     """Examples of How To Use
-    tickspot list project
-    tickspot list task 11934
-    tickspot create -p 11934 -t 12319 -ho 8 -d 2021-07-16
+    ticker list project
+    ticker list task 11934
+    ticker create -p 1955215 -t 14519343 -ho 8 -d 2021-10-11
     """
     main()
