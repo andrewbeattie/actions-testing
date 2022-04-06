@@ -29,7 +29,7 @@ setup(
     entry_points={"console_scripts": ["ticker=tickspot.ticker:main"]},
     author="Andrew Beattie",
     description="Interact with TickSpot with Python",
-    python_requires="~=3.6.8",
+    python_requires="~=3.8",
     packages=find_packages(),
     install_requires=install_requires,
 )
