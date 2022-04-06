@@ -1,5 +1,3 @@
-from airflow.models import Variable 
-
 class Constants:
   BaseUrl = "https://www.tickspot.com/api/v2/"
   BaseUrlSubId = "https://www.tickspot.com/%s/api/v2/"
