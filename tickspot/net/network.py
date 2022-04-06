@@ -15,7 +15,7 @@ class Authorize(object):
         self.token, self.sub_id = self.authorize(username, password)
 
     def authorize(self, username: str, password: str) -> Tuple[str, str]:
-        headers = Constants.UserAgent
+        headers = {"User-agent": f"DPS ({username})"}
         r = requests.get(
             Constants.BaseUrl + "roles.json", headers=headers, auth=(username, password)
         )
@@ -38,7 +38,7 @@ class Resource(object):
         self.sub_id = sub_id
 
     def post(self, obj, data):
-        headers = Constants.UserAgent
+        headers = {"User-agent": f"DPS ({username})"}
         headers.update({"Authorization": f"Token token={self.token}"})
         r = requests.post(Constants.BaseUrlSubId % self.sub_id + obj, json=data, headers=headers)
         logger.debug(r.status_code)
@@ -49,7 +49,7 @@ class Resource(object):
             raise Exception(r.text)
 
     def get(self, obj):
-        headers = Constants.UserAgent
+        headers = {"User-agent": f"DPS ({username})"}
         headers.update({"Authorization": f"Token token={self.token}"})
         r = requests.get(Constants.BaseUrlSubId % self.sub_id + obj, headers=headers)
         logger.debug(r.status_code)
@@ -61,7 +61,7 @@ class Resource(object):
             return Exception(r.text)
 
     def list(self, obj):
-        headers = Constants.UserAgent
+        headers = {"User-agent": f"DPS ({username})"}
         headers.update({"Authorization": f"Token token={self.token}"})
         r = requests.get(Constants.BaseUrlSubId % self.sub_id + obj, headers=headers)
         logger.debug(r.status_code)
