@@ -19,6 +19,9 @@ from pprint import PrettyPrinter
 from tickspot.settings import env
 from tickspot.net.network import Entry, Project, Task, Authorize
 
+def current_date():
+    import datetime
+    return datetime.datetime.now().strftime("%Y-%m-%d")
 
 class TickSpot(Authorize):
     def __init__(self, username: str, password: str):
@@ -38,6 +41,16 @@ class TickSpot(Authorize):
         self.pp.pprint(
             self.entry.list(project_id=project_id, start_date=start_date, end_date=end_date)
         )
+    
+    def list_entries_today(self, project_id: int):
+        entries = self.entry.list(project_id=project_id, start_date=current_date(), end_date=current_date())
+        self.pp.pprint(
+            entries
+        )
+        hours = 0
+        for entry in entries:
+            hours += entry.get("hours")
+        print(f"Hours: {hours}")
 
     def create_entry(self, project_id: int, task_id: int, hours: float, date: str, note: str):
         self.entry.post(
@@ -46,7 +59,7 @@ class TickSpot(Authorize):
                 "hours": hours,
                 "date": date,
                 "task_id": task_id,
-                "note": note,
+                "notes": note,
             }
         )
 
@@ -59,6 +72,8 @@ def fetch(args):
         tickspot.list_projects()
     elif args.category == "task":
         tickspot.list_tasks(project_id=args.project)
+    elif args.category == "today":
+        tickspot.list_entries_today(project_id=args.project)
     else:
         raise ValueError("Only project and task are supported for list.")
 
@@ -78,4 +93,26 @@ def create(args):
     )
     tickspot.create_entry(
         project_id=args.project, task_id=args.task, hours=args.hours, date=args.date, note=None
+    )
+
+def start(args):
+    import time
+    import datetime
+    start_time = time.time()
+    if not args.project:
+        raise ValueError("Require project")
+    if not args.task:
+        raise ValueError("Require task")
+    input("Press Enter to stop")
+    end_time = time.time()
+
+    time_lapsed = end_time - start_time
+    hours = time_lapsed/ 3600.0
+
+    tickspot = TickSpot(
+        username=env.get("TICKSPOT_USERNAME"), password=env.get("TICKSPOT_PASSWORD")
+    )
+
+    tickspot.create_entry(
+        project_id=args.project, task_id=args.task, hours=hours, date=current_date(), note=args.message
     )
