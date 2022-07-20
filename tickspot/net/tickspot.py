@@ -35,7 +35,11 @@ class TickSpot(Authorize):
         self.pp.pprint(self.task.list(project_id=project_id))
 
     def list_projects(self):
-        self.pp.pprint(self.project.list())
+        projects = self.project.list()
+        for project in projects:
+            print(f"Project Name: {project.get('name')}")
+            print(f"          Id: {project.get('id')}")
+ 
 
     def list_entries(self, project_id: int, start_date: str, end_date: str):
         self.pp.pprint(
@@ -97,13 +101,36 @@ def create(args):
 
 def start(args):
     import time
-    import datetime
+    
     start_time = time.time()
     if not args.project:
         raise ValueError("Require project")
     if not args.task:
         raise ValueError("Require task")
-    input("Press Enter to stop")
+
+
+
+    print(r"""
+    Art by Blazej Kozlowski
+       _                        
+       \`*-.                    
+        )  _`-.                 
+       .  : `. .                
+       : _   '  \               
+       ; *` _.   `*-._          
+       `-.-'          `-.       
+         ;       `       `.     
+         :.       .        \    
+         . \  .   :   .-'   .   
+         '  `+.;  ;  '      :   
+         :  '  |    ;       ;-. 
+         ; '   : :`-:     _.`* ;
+[bug] .*' /  .*' ; .*`- +'  `*' 
+      `*-*   `*-*  `*-*'
+    
+    """)
+
+    input("     Press Enter to Submit Stop Timer")
     end_time = time.time()
 
     time_lapsed = end_time - start_time

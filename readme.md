@@ -11,15 +11,10 @@ Install directly from GitHub as follows:
 ```bash
 pip install git+https://github.com/andrewbeattie/tick.git
 ```
-You will also need to have a config.yaml file with the following information:
+You will need to add the following to your environment variables.
 ```
-tickspot:
-  username:
-  password:
-date:
-  country:
-  province:
-  state:
+TICKSPOT_USERNAME
+TICKERSPOT_PASSWORD
 ```
 You will need to save this file and create the environment variable "TICKSPOT_CONFIG" pointing towards the config file.
 

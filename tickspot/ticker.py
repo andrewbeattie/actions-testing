@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
-from tickspot.net.tickspot import fetch, create, start
-
+from tickspot.net.tickspot import current_date, fetch, create, start, TickSpot, current_date
 
 def main():
     parser = ArgumentParser(prog="TickSpot")
     subparsers = parser.add_subparsers(help="help for subcommands")
+
     parser_list = subparsers.add_parser("list")
     parser_list.set_defaults(func=fetch)
     parser_list.add_argument(
