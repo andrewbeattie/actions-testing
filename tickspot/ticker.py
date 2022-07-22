@@ -1,15 +1,16 @@
 from argparse import ArgumentParser
 from tickspot.net.tickspot import current_date, fetch, create, start, TickSpot, current_date
 
+
 def main():
     parser = ArgumentParser(prog="TickSpot")
     subparsers = parser.add_subparsers(help="help for subcommands")
-
+    # parser for the list command allows user to collect information from TickSpot
     parser_list = subparsers.add_parser("list")
     parser_list.set_defaults(func=fetch)
     parser_list.add_argument(
         "category",
-        choices=["project", "task", "today"],
+        choices=["project", "task", "time"],
         type=str,
         help="Defines the action to take, can be either task, project or entry",
     )
@@ -19,6 +20,7 @@ def main():
         type=int,
         help="To return tasks we require that a project id is provided.",
     )
+    # parser for start command which allows user to start a TickSpot entry
     parser_start = subparsers.add_parser("start")
     parser_start.set_defaults(func=start)
     parser_start.add_argument(
@@ -31,9 +33,9 @@ def main():
         "-m", "--message", type=str, help="Task id to use as int when creating an entry."
 
     )
+    # parser for create command which allows user to create a TickSpot entry
     parser_create = subparsers.add_parser("create")
     parser_create.set_defaults(func=create)
-
     parser_create.add_argument(
         "-ho", "--hours", type=float, help="How many hours to use when creating an entry."
     )
@@ -63,5 +65,6 @@ if __name__ == "__main__":
     ticker list task 11934
     ticker create -p 1955215 -t 14519343 -ho 8 -d 2021-10-11
     ticker start -p <project> -t <task> -m <summary>
+    ticker list time -p
     """
     main()

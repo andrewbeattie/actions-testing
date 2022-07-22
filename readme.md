@@ -26,5 +26,13 @@ You will need to save this file and create the environment variable "TICKSPOT_CO
 2. Use the project id to use list task to get the appropriate task id
 3. Create an entry with a project id and task id.
 
+## Suggestions
+
+The way things are currently setup I think it makes sense to save the project id and tasks that are commonly used. The way I would go about this is
+using aliases to shortcut the process and so you don't need to remember the ids. Also keep in mind you can edit the entries once they are submitted.
+```
+alias tick-dev='ticker start -p <project_id> -t <task_id>'
+```
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit)
